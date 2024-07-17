@@ -1,44 +1,56 @@
-# EV3 Robot Control Program
+# Programming the EV3 Robot Projects
 
-## Description
+## Overview
+This repository contains three projects for programming the LEGO Mindstorms EV3 robot. Each project explores different programming environments to control the EV3 robot, namely C++, LabVIEW, and Matlab/Simulink.
 
-This repository contains a series of exercises designed to demonstrate control of an EV3 robot using C++ and the `ev3dev` library. The exercises incrementally develop a robot's capabilities, including response to touch inputs, object detection, and tracking moving objects.
+## Projects
 
-## Table of Contents
+### 1. EV3 Robot Programming in C++
+In this project, the EV3 robot is programmed using C++ with the ev3dev library. The goal is to make the robot autonomously drive towards and follow a moving object.
 
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Exercise 1-2: Drive on Command](#exercise-1-2-drive-on-command)
-  - [Exercise 1-4: Object Identification](#exercise-1-4-object-identification)
-  - [Exercise 1-5: Tracking a Moving Object](#exercise-1-5-tracking-a-moving-object)
+#### Tasks:
+2. **Drive on Command**: Implement a program that allows the robot to start and stop driving when the touch sensor is pressed.
+3. **Modeling**: Design state machines and flow diagrams for object identification and robot control.
+4. **Object Identification**: Implement a program to detect the nearest object using the ultrasonic sensor.
+5. **Tracking a Moving Object**: Program the robot to follow the nearest moving object smoothly.
 
-## Installation
+#### Key Classes and Functions:
+- `motor(PORT, MOTOR_TYPE)`: Controls the EV3 motors.
+- `touch_sensor(PORT)`: Reads the state of the touch sensor.
+- `ultrasonic_sensor(PORT)`: Reads distance measurements from the ultrasonic sensor.
 
-1. Clone this repository to your local machine or download the source code.
-2. Ensure that your EV3 device is running the `ev3dev` operating system. Instructions for setting up `ev3dev` can be found on the [official ev3dev website](https://www.ev3dev.org/docs/getting-started/).
+### 2. EV3 Robot Programming in LabVIEW
+This project uses LabVIEW, a graphical programming environment, to program the EV3 robot. The focus is on implementing a line-following algorithm with distance control.
 
-## Usage
+#### Tasks:
+2. **Light Sensor**: Display light sensor values and perform calibration.
+3. **Driving on a Line**: Implement a controller for line-following based on the calibrated values.
+4. **Completing the Functionality**: Extend the program to meet all functional requirements, including state transitions and error handling.
+5. **Report**: Document the algorithms, implementation, and any issues encountered.
 
-### Exercise 1-2: Drive on Command
+#### Functional Description:
+- The robot follows a line and maintains a minimum distance of 20 cm from the robot ahead.
+- Calibration of color values is performed at startup.
+- State transitions between Ready and Active states are controlled by the touch sensor.
+- Error handling is implemented for scenarios where the line edge is lost.
 
-This exercise demonstrates basic motor control with the EV3 robot. The program reads the state of a touch sensor and controls two main motors. It runs in a non-blocking manner, allowing for other operations to potentially execute simultaneously.
+### 3. EV3 Robot Programming with Matlab/Simulink
+In this project, Matlab/Simulink is used to equip the EV3 robot with similar functionality as described in the first project, but using a PI-controller.
 
-To run this exercise:
-- Compile the code using a C++ compiler that supports C++11.
-- Deploy and execute on the EV3 robot.
+#### Tasks:
+1. **Toggling between Modes**: Use the touch sensor to toggle the robot between Standby and Active modes.
+2. **Object Detection**: Read values from the ultrasonic sensor and motor encoder to plot distance and angle in an X-Y diagram.
+3. **Tracking a Moving Object**: Implement object detection and control algorithms to track and follow a moving object.
+4. **Controller**: Implement PI-controllers for distance and angle control, simulate various scenarios, and adjust controller parameters.
+5. **Presentation**: Refine the control system and demonstrate the robot's tracking capability.
 
-### Exercise 1-4: Object Identification
+#### Key Concepts:
+- **Simulink Blocks**: Use blocks like Constant, Switch, Integrator, and Saturation to build the control system.
+- **Feedback Control Loop**: Implement PI-controllers to maintain the desired distance and angle.
+- **Simulation**: Test the control system in a simulated environment before deploying it to the robot.
 
-In this exercise, the robot uses an ultrasonic sensor to detect the distance and direction of the nearest object. The robot does not move; it only reads and displays sensor values.
-
-To run this exercise:
-- Compile and deploy the code similarly as described for Exercise 1-2.
-
-### Exercise 1-5: Tracking a Moving Object
-
-This exercise completes the functionality by enabling the robot to track and move towards a detected object, adjusting its speed based on the object's distance and angle.
-
-To run this exercise:
-- Ensure that the EV3 robot has space to move and that the environment is safe for navigation.
-- Compile, deploy, and execute the code.
-
+## Requirements
+- LEGO Mindstorms EV3 robot kit
+- EV3dev OS (for C++ project)
+- LabVIEW software
+- Matlab/Simulink with EV3 support package
